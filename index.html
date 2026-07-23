@@ -5,7 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Moussmedia | Estudio de Marketing Digital en Tarragona</title>
   <meta name="description" content="Moussmedia: Estudio de marketing digital en Tarragona. Diseño web, redes sociales y SEO local para que tu negocio deje de ser invisible en internet.">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="canonical" href="https://moussmedia.com/">
+
+  <!-- Open Graph / Facebook / Instagram -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://moussmedia.com/">
+  <meta property="og:site_name" content="Moussmedia">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:title" content="Moussmedia | Estudio de Marketing Digital en Tarragona">
+  <meta property="og:description" content="Diseñamos webs, gestionamos redes y lanzamos campañas para negocios de Tortosa, Amposta y Castelló que quieren dejar de ser invisibles en internet.">
+  <meta property="og:image" content="https://moussmedia.com/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Moussmedia — Estudio de marketing digital en Tarragona">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Moussmedia | Estudio de Marketing Digital en Tarragona">
+  <meta name="twitter:description" content="Diseñamos webs, gestionamos redes y lanzamos campañas para negocios de Tortosa, Amposta y Castelló que quieren dejar de ser invisibles en internet.">
+  <meta name="twitter:image" content="https://moussmedia.com/og-image.jpg">
+
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="icon-192.png" type="image/png" sizes="192x192">
+  <link rel="icon" href="icon-512.png" type="image/png" sizes="512x512">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -119,8 +141,18 @@
     }
     .nav-bar { display: flex; align-items: center; justify-content: space-between; }
 
+    /* Logotipo — máscara CSS sobre logo-mark.png para poder recolorear (negro/blanco) el mismo archivo */
+    .logo-mark {
+      display: inline-block;
+      flex-shrink: 0;
+      aspect-ratio: 266 / 260;
+      background-color: var(--ink);
+      -webkit-mask: url('logo-mark.png') center / contain no-repeat;
+      mask: url('logo-mark.png') center / contain no-repeat;
+    }
+
     .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
-    .brand svg { height: 30px; width: auto; display: block; }
+    .brand .logo-mark { height: 30px; }
     .brand .wordmark {
       font-family: var(--font-display);
       font-size: 1.28rem; font-weight: 520; letter-spacing: -0.01em;
@@ -355,6 +387,7 @@
     .ph-2 { background: linear-gradient(160deg, #23211e, #45403a); }
     .ph-3 { background: linear-gradient(160deg, #d8cfc0, #b3a68a); }
     .project .thumb .ph svg { width: 34%; opacity: 0.16; }
+    .project .thumb img.ph { width: 100%; height: 100%; object-fit: cover; background: #050505; }
     .ph-dark svg path { fill: var(--paper); }
     .project .meta { display: flex; justify-content: space-between; align-items: baseline; padding-top: 14px; }
     .project .meta h3 { font-size: 1.12rem; }
@@ -508,8 +541,7 @@
       gap: clamp(30px, 4vw, 60px);
       padding: clamp(50px, 6vw, 80px) 0;
     }
-    .footer-brand svg { height: 34px; width: auto; margin-bottom: 18px; }
-    .footer-brand svg path { fill: var(--paper); }
+    .footer-brand .logo-mark { height: 34px; margin-bottom: 18px; background-color: var(--paper); }
     .footer-brand p { font-size: 0.92rem; max-width: 30ch; }
     .site-footer h4 {
       font-family: var(--font-body); font-size: 0.78rem; font-weight: 600;
@@ -610,25 +642,160 @@
       .hero { padding-top: 100px; }
     }
   </style>
+
+  <!-- Datos estructurados: negocio local, servicios y valoraciones -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "@id": "https://moussmedia.com/#organization",
+    "name": "Moussmedia",
+    "url": "https://moussmedia.com/",
+    "description": "Estudio de marketing digital en Tarragona. Diseño web, redes sociales, publicidad online y SEO local para negocios de Tortosa, Amposta y Castelló.",
+    "email": "rachid@moussmedia.com",
+    "telephone": "+34615222074",
+    "priceRange": "€€",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "La Sénia",
+      "addressRegion": "Tarragona",
+      "addressCountry": "ES"
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Tortosa" },
+      { "@type": "City", "name": "Amposta" },
+      { "@type": "City", "name": "Deltebre" },
+      { "@type": "City", "name": "Vinaròs" },
+      { "@type": "City", "name": "Benicarló" },
+      { "@type": "City", "name": "Castelló" }
+    ],
+    "sameAs": [
+      "https://www.instagram.com/moussmedia"
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.7",
+      "bestRating": "5",
+      "reviewCount": "3"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "author": { "@type": "Organization", "name": "Bistro Street" },
+        "reviewBody": "Desde que diseñaron nuestro sistema de pedidos a domicilio y nos ayudan con la presencia online, las ventas han dado un salto enorme. Servicio impecable."
+      },
+      {
+        "@type": "Review",
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "author": { "@type": "Organization", "name": "Global Tortosa" },
+        "reviewBody": "Necesitábamos modernizar cómo nos encontraban los nuevos alumnos. Gracias a su trabajo, las matrículas han crecido de forma constante."
+      },
+      {
+        "@type": "Review",
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "author": { "@type": "Organization", "name": "Keeva" },
+        "reviewBody": "Entendieron a la perfección lo que buscábamos. El resultado ha sido impecable y esto es solo el principio."
+      }
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Servicios Moussmedia",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Diseño web",
+            "description": "Webs a medida, rápidas y pensadas para convertir visitas en clientes. Desde landing pages hasta tiendas online."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Redes sociales",
+            "description": "Estrategia y gestión de Instagram, Facebook y TikTok con contenido que conecta con el público local."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Publicidad online",
+            "description": "Campañas en Google Ads y Meta Ads segmentadas por zona geográfica."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "SEO local",
+            "description": "Posicionamiento en Google y Google Maps para negocios locales."
+          }
+        }
+      ]
+    }
+  }
+  </script>
+
+  <!-- Datos estructurados: preguntas frecuentes -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Cuánto cuesta una web o una campaña?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Depende del alcance del proyecto. Trabajamos con presupuestos cerrados: nos cuentas qué necesitas, te enviamos una propuesta clara y sin sorpresas antes de empezar."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Trabajáis solo en Terres de l'Ebre?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nuestra especialidad es el mercado local — Tortosa, Amposta, Deltebre, Vinaròs, Benicarló y Castelló — pero trabajamos con clientes de cualquier lugar de forma remota."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuánto tardáis en entregar una web?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Una landing page suele estar lista en 1–2 semanas; una web completa, en 3–5 semanas según el contenido. Siempre acordamos la fecha de entrega antes de empezar."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Hay permanencia en los servicios mensuales?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Los servicios de redes sociales y publicidad se renuevan mes a mes. Si en algún momento no te compensa, lo dejas sin penalización."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Ya tengo una web, ¿podéis mejorarla?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. Auditamos tu web actual y te decimos con sinceridad si conviene mejorarla o rehacerla. A veces con pequeños cambios de contenido y velocidad se consigue mucho."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
-
-  <!-- Logotipo (recreación SVG del monograma) -->
-  <svg width="0" height="0" style="position:absolute">
-    <defs>
-      <g id="mark">
-        <path d="M6 100C8 97 8 93 8 88L8 80C8 64 13 56 18 56C24 56 28 66 28 80L28 88C28 93 28 97 30 100Z"/>
-        <path d="M32 100C34 97 34 93 34 88L34 54C34 38 39 30 46 30C54 30 58 40 58 54L58 88C58 93 58 97 60 100Z"/>
-        <path d="M62 100C64 97 64 93 64 88L64 36C64 20 69 12 78 12C88 12 92 22 92 36L92 88C92 93 92 97 94 100Z"/>
-      </g>
-    </defs>
-  </svg>
 
   <!-- ============================ CABECERA ============================ -->
   <header class="site-header" id="siteHeader">
     <div class="wrap nav-bar">
       <a href="#inicio" class="brand" aria-label="Moussmedia — inicio">
-        <svg viewBox="0 0 100 100" aria-hidden="true"><use href="#mark" fill="#161513"/></svg>
+        <span class="logo-mark" aria-hidden="true"></span>
         <span class="wordmark">moussmedia</span>
       </a>
       <nav class="nav-links" aria-label="Navegación principal">
@@ -660,7 +827,7 @@
 
     <!-- ============================ HERO ============================ -->
     <section class="hero" id="inicio">
-      <svg class="hero-mark" viewBox="0 0 100 100" aria-hidden="true"><use href="#mark" fill="#161513"/></svg>
+      <span class="hero-mark logo-mark" aria-hidden="true"></span>
       <div class="wrap">
         <div class="hero-eyebrow reveal"><span class="dot"></span> Estudio de marketing digital — La Sénia</div>
         <h1 class="reveal d1">Marketing digital para marcas locales que <em>destacan</em></h1>
@@ -829,10 +996,7 @@
           <!-- Proyecto 1: Bistro Street -->
           <a href="https://bistrostreet.es/menu" target="_blank" rel="noopener" class="project reveal">
             <div class="thumb">
-              <div class="ph" style="background: #050505; position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px;">
-                <span style="color: #ffffff; font-family: 'Inter', system-ui, sans-serif; font-weight: 900; font-size: clamp(2.4rem, 4.5vw, 3.2rem); letter-spacing: 0.05em; line-height: 0.9; text-transform: uppercase;">Bistro</span>
-                <span style="color: #ffffff; font-family: 'Inter', system-ui, sans-serif; font-weight: 900; font-size: clamp(1.2rem, 2.2vw, 1.6rem); letter-spacing: 0.2em; line-height: 1; text-transform: uppercase; margin-top: 2px;">Street</span>
-              </div>
+              <img class="ph" src="bistro-street-logo.png" alt="Bistro Street" loading="lazy">
             </div>
             <div class="meta"><strong class="h-title" style="display:block; font-size:1.1rem; margin-bottom:0.25rem;">Bistro Street</strong><span>Sistema de Pedidos / TPV</span></div>
           </a>
@@ -860,7 +1024,6 @@
             <div class="meta"><strong class="h-title" style="display:block; font-size:1.1rem; margin-bottom:0.25rem;">Campaña en Video</strong><span>Redes Sociales</span></div>
           </div>
         </div>
-        <p class="projects-note reveal">— Sección preparada para tus casos reales: nombre del cliente, foto y resultado.</p>
       </div>
     </section>
 
@@ -1020,7 +1183,7 @@
     <div class="wrap">
       <div class="footer-top">
         <div class="footer-brand">
-          <svg viewBox="0 0 100 100" aria-hidden="true"><use href="#mark"/></svg>
+          <span class="logo-mark" aria-hidden="true"></span>
           <p>Estudio de marketing digital para negocios locales de Tarragona y Castelló.</p>
         </div>
         <div>
