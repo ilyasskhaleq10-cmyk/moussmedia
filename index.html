@@ -31,7 +31,9 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,420;0,9..144,520;1,9..144,340&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Hoja de fuentes cargada sin bloquear el renderizado: se aplica en cuanto llega, sin retrasar el first paint -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,420;0,9..144,520;1,9..144,340&family=Inter:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,420;0,9..144,520;1,9..144,340&family=Inter:wght@400;500;600&display=swap"></noscript>
 
   <style>
     /* ============================================================
@@ -996,7 +998,7 @@
           <!-- Proyecto 1: Bistro Street -->
           <a href="https://bistrostreet.es/menu" target="_blank" rel="noopener" class="project reveal">
             <div class="thumb">
-              <img class="ph" src="bistro-street-logo.png" alt="Bistro Street" loading="lazy">
+              <img class="ph" src="bistro-street-logo.jpg" alt="Bistro Street" loading="lazy" width="900" height="600">
             </div>
             <div class="meta"><strong class="h-title" style="display:block; font-size:1.1rem; margin-bottom:0.25rem;">Bistro Street</strong><span>Sistema de Pedidos / TPV</span></div>
           </a>
@@ -1019,7 +1021,6 @@
                   <a href="https://www.instagram.com/reel/DahdeKgsMFq/" style="color: var(--text-body); font-family:var(--font-sans); font-size:14px; text-decoration:none;" target="_blank">Cargando Reel de Instagram...</a>
                 </div>
               </blockquote>
-              <script async src="https://www.instagram.com/embed.js"></script>
             </div>
             <div class="meta"><strong class="h-title" style="display:block; font-size:1.1rem; margin-bottom:0.25rem;">Campaña en Video</strong><span>Redes Sociales</span></div>
           </div>
@@ -1172,7 +1173,7 @@
             </button>
           </form>
           <!-- Iframe oculto: el formulario se envía aquí dentro como en Keeva -->
-          <iframe name="hidden_iframe" id="hiddenIframe" style="display:none;"></iframe>
+          <iframe name="hidden_iframe" id="hiddenIframe" title="Respuesta del envío del formulario" style="display:none;"></iframe>
         </div>
       </div>
     </section>
@@ -1263,6 +1264,23 @@
       });
     }, { threshold: 0.12 });
     document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+    // ---------- Embed de Instagram (carga diferida hasta que la sección es visible) ----------
+    const igEmbed = document.querySelector(".instagram-media");
+    if (igEmbed) {
+      const igObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const script = document.createElement("script");
+            script.async = true;
+            script.src = "https://www.instagram.com/embed.js";
+            document.body.appendChild(script);
+            igObserver.disconnect();
+          }
+        });
+      }, { rootMargin: "200px" });
+      igObserver.observe(igEmbed);
+    }
 
     // ---------- Carrusel de opiniones ----------
     const slides = [...document.querySelectorAll(".testimonial")];
