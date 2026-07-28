@@ -2,6 +2,24 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+
+  <!-- Google tag (gtag.js) — solo se carga si el usuario acepta cookies en el aviso -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    window.loadAnalytics = function () {
+      if (window.__gaLoaded) return;
+      window.__gaLoaded = true;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-03CQ93ZJJ1';
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'G-03CQ93ZJJ1');
+    };
+    if (localStorage.getItem('mm-cookies') === 'accepted') { window.loadAnalytics(); }
+  </script>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Moussmedia | Estudio de Marketing Digital en Tarragona</title>
   <meta name="description" content="Moussmedia: Estudio de marketing digital en Tarragona. Diseño web, redes sociales y SEO local para que tu negocio deje de ser invisible en internet.">
@@ -1228,7 +1246,7 @@
 
   <!-- Banner de cookies -->
   <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Aviso de cookies">
-    <p>Esta web utiliza únicamente cookies técnicas y recursos de terceros (tipografías de Google Fonts) necesarios para su funcionamiento. Puedes consultar más información en nuestra <a href="legal.html#cookies">política de cookies</a>.</p>
+    <p>Esta web utiliza cookies técnicas necesarias, recursos de terceros (tipografías de Google Fonts) y, si lo aceptas, cookies de análisis de Google Analytics para entender cómo se usa el sitio. Puedes consultar más información en nuestra <a href="legal.html#cookies">política de cookies</a>.</p>
     <div class="cookie-actions">
       <button class="btn btn-solid" id="cookieAccept">Aceptar</button>
       <button class="btn btn-ghost" id="cookieReject">Rechazar</button>
@@ -1334,7 +1352,10 @@
       localStorage.setItem("mm-cookies", choice);
       banner.classList.remove("show");
     };
-    document.getElementById("cookieAccept").addEventListener("click", () => closeBanner("accepted"));
+    document.getElementById("cookieAccept").addEventListener("click", () => {
+      closeBanner("accepted");
+      window.loadAnalytics();
+    });
     document.getElementById("cookieReject").addEventListener("click", () => closeBanner("rejected"));
 
     // ---------- Validación del formulario ----------
