@@ -1,0 +1,3 @@
+Coloca aquí el vídeo del showreel con el nombre: showreel.mp4
+Recomendado: H.264, 1920x1080, 20-40 s, sin audio, menos de 15 MB.
+Mientras no exista, la sección Showreel permanece oculta.
