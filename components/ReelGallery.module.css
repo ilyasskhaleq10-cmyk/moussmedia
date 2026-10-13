@@ -1,0 +1,10 @@
+.section { height: 300svh; position: relative; }
+.sticky { position: sticky; top: 0; height: 100svh; overflow: hidden; display: grid; align-content: center; gap: 28px; }
+.head { display: flex; justify-content: space-between; align-items: end; gap: 16px; flex-wrap: wrap; }
+.head h2 { font-size: clamp(38px, 5vw, 78px); line-height: 1; font-weight: 300; }
+.track { display: flex; gap: clamp(14px, 2vw, 28px); padding-inline: var(--gut); width: max-content; will-change: transform; }
+.card { margin: 0; width: min(62vw, 300px); display: grid; gap: 12px; }
+.card video { width: 100%; aspect-ratio: 9 / 16; object-fit: cover; background: var(--bg-2); }
+.card figcaption { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; }
+.card figcaption span { color: var(--mute); letter-spacing: 0.14em; text-transform: uppercase; font-size: 11px; }
+@media (max-height: 760px) { .card { width: min(50vw, 230px); } }

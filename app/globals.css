@@ -1,0 +1,62 @@
+/* Tokens de diseño: cambia aquí colores y tipografías de toda la web */
+:root {
+  --bg: #0b0b0b;
+  --bg-2: #141414;
+  --fg: #f2efe9;
+  --mute: #9a968e;
+  --accent: #d8c7a3;
+  --line: rgba(242, 239, 233, 0.14);
+  --err: #e2826f;
+
+  --font-display: "Cormorant Garamond", "Times New Roman", serif;
+  --font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+
+  --gut: clamp(16px, 5vw, 72px);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 300;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+img, video { display: block; max-width: 100%; }
+a { color: inherit; }
+:focus-visible { outline: 1px solid var(--accent); outline-offset: 4px; }
+::selection { background: var(--fg); color: var(--bg); }
+
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+p { margin: 0; }
+
+.wrap { padding-inline: var(--gut); }
+.eyebrow { font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent); }
+.mute { color: var(--mute); }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 15px 28px; border: 1px solid var(--fg); background: transparent; color: var(--fg);
+  font: 500 12px/1 var(--font-body); letter-spacing: 0.22em; text-transform: uppercase;
+  text-decoration: none; cursor: pointer; transition: background 0.4s var(--ease), color 0.4s var(--ease);
+}
+.btn:hover { background: var(--fg); color: var(--bg); }
+.btn.solid { background: var(--fg); color: var(--bg); }
+.btn.solid:hover { background: var(--accent); border-color: var(--accent); }
+.btn.small { padding: 11px 18px; }
+.btn[disabled] { opacity: 0.5; cursor: wait; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}

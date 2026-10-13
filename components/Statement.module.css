@@ -1,0 +1,6 @@
+.statement { padding-block: 22vh; }
+.text {
+  font-family: var(--font-display); font-weight: 300;
+  font-size: clamp(32px, 5vw, 76px); line-height: 1.12; max-width: 22ch; text-wrap: balance;
+}
+.word { display: inline; }

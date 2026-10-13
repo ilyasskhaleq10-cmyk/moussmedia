@@ -1,0 +1,26 @@
+.form { display: grid; gap: 24px; min-width: 0; }
+.form fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: 20px; min-width: 0; }
+.form legend { padding: 0; margin-bottom: 6px; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); }
+.row { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 20px; }
+.f { display: grid; gap: 8px; min-width: 0; }
+.f label { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mute); }
+.f input, .f select, .f textarea {
+  width: 100%; background: transparent; border: 0; border-bottom: 1px solid var(--line); border-radius: 0;
+  color: var(--fg); padding: 10px 0; font: 300 17px/1.4 var(--font-body); transition: border-color 0.3s;
+}
+.f select { appearance: none; -webkit-appearance: none; padding-right: 24px;
+  background-image: linear-gradient(45deg, transparent 50%, var(--fg) 50%), linear-gradient(135deg, var(--fg) 50%, transparent 50%);
+  background-position: calc(100% - 10px) 55%, calc(100% - 5px) 55%; background-size: 5px 5px; background-repeat: no-repeat; }
+.f select option { background: var(--bg-2); color: var(--fg); }
+.f textarea { resize: vertical; }
+.f input:focus, .f select:focus, .f textarea:focus { outline: 0; border-color: var(--fg); }
+.msg { display: none; font-size: 13px; color: var(--err); }
+.error .msg { display: block; }
+.error input, .error select { border-color: var(--err); }
+.fit { margin: 0; font-size: 14px; color: var(--accent); border-left: 1px solid var(--accent); padding-left: 12px; }
+.check { display: flex; gap: 12px; align-items: flex-start; font-size: 14px; color: var(--mute); }
+.check input { margin-top: 4px; accent-color: var(--fg); }
+.checkErr { color: var(--err); }
+.failMsg { color: var(--err); font-size: 14px; }
+.ok { border: 1px solid var(--line); padding: 32px; display: grid; gap: 10px; }
+.ok h3 { font-size: 36px; font-weight: 300; }
